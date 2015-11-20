@@ -209,7 +209,7 @@ module Arel
 
       def source_with_lock_for_select_statement(o, a)
         core = o.cores.first
-        source = "FROM #{visit(core.source, a).strip}" if core.source
+        source = "FROM #{visit(core.source, a)}" if core.source
         if source && o.lock
           lock = visit o.lock, a
           index = source.match(/FROM [\w\[\]\.]+/)[0].mb_chars.length
